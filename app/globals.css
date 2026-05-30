@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .fingerprint-pulse {
+    animation: fingerprint-pulse 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes fingerprint-pulse {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}

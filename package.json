@@ -1,0 +1,31 @@
+{
+  "name": "sistema-asistencia-secundaria",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.2",
+    "lucide-react": "0.468.0",
+    "next": "16.2.6",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.1",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "eslint": "9.16.0",
+    "eslint-config-next": "16.2.6",
+    "postcss": "8.5.10",
+    "tailwindcss": "3.4.16",
+    "typescript": "5.7.2"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
+  }
+}
