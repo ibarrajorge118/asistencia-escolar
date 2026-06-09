@@ -8,9 +8,10 @@ export type BiometricStatus = "Huella registrada" | "Pendiente" | "Error";
 export type Student = {
   id: number;
   nombre: string;
-  matricula: string;
+  matricula?: string;
   grado: Grade;
   grupo: string;
+  turno: "Matutino" | "Vespertino";
   estado: StudentStatus;
   huellaRegistrada: boolean;
   estadoBiometrico: BiometricStatus;
@@ -26,6 +27,7 @@ export type Group = {
   id: number;
   nombre: string;
   grado: Grade;
+  turno: "Matutino" | "Vespertino";
   tutor: string;
   aula: string;
 };
@@ -100,6 +102,7 @@ export const groups: Group[] = gradeOrder.flatMap((grado, gradeIndex) =>
     id: gradeIndex * 6 + letterIndex + 1,
     nombre: `${gradeIndex + 1}${letter}`,
     grado,
+    turno: "Matutino",
     tutor: teacherDirectory[(gradeIndex * 6 + letterIndex) % teacherDirectory.length],
     aula: `${String.fromCharCode(65 + gradeIndex)}-${100 + gradeIndex * 100 + letterIndex + 1}`,
   })),
@@ -272,6 +275,7 @@ function buildStudents() {
       matricula: `SEC-${String(2600 + index + 1).padStart(4, "0")}`,
       grado: group.grado,
       grupo: group.nombre,
+      turno: group.turno,
       estado: index % 83 === 0 ? "Inactivo" : "Activo",
       huellaRegistrada: !pending && !error,
       estadoBiometrico: error ? "Error" : pending ? "Pendiente" : "Huella registrada",
@@ -291,7 +295,7 @@ export const attendance: AttendanceRecord[] = students.slice(0, 654).map((studen
   return {
     id: index + 1,
     alumno: student.nombre,
-    matricula: student.matricula,
+    matricula: student.matricula ?? "",
     grado: student.grado,
     grupo: student.grupo,
     fecha: "2026-05-29",
